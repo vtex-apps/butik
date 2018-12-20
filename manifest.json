@@ -1,0 +1,16 @@
+{
+  "vendor": "vtex",
+  "name": "butik",
+  "version": "1.0.0",
+  "title": "VTEX Butik",
+  "description": "VTEX components for store front",
+  "builders": {
+    "react": "2.x"
+  },
+  "scripts": {
+    "postreleasy": "vtex publish --verbose"
+  },
+  "categories": [],
+  "registries": [],
+  "settingsSchema": {}
+}
