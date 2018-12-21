@@ -40,8 +40,8 @@
     "react-id-swiper": "^1.6.8",
     "react-intl": "^2.7.2",
     "react-transition-group": "^2.5.1",
-    "xstate": "^4.2.2",
-    "vtex-tachyons": "^2.10.0"
+    "vtex-tachyons": "^2.10.0",
+    "xstate": "^4.2.2"
   },
   "peerDependencies": {
     "react": "16.x"
@@ -76,7 +76,7 @@
     "prop-types": "^15.6.2",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
-    "react-styleguidist": "^7.3.10",
+    "react-styleguidist": "^8.0.6",
     "watch": "^1.0.2"
   },
   "author": "",
