@@ -619,7 +619,7 @@ button.swiper-pagination-bullet {
 
 /*------------------ vtex -----------------------*/
 .gallery-cursor {
-  cursor: url('./cursor.svg') 8 8, default;
+  cursor: url('cursor.svg') 8 8, default;
 }
 
 .gallery-thumbs .swiper-slide {

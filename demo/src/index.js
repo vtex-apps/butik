@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
-import SKUSelector from '../../src/SKUSelector'
+import SKUSelector from '../../react/components/SKUSelector'
 
-import Example from '../../src'
-import Carousel from '../../src/Carousel'
+import Carousel from '../../react/components/Carousel'
 import './tachyons.css'
 
 class Demo extends Component {
@@ -14,7 +13,7 @@ class Demo extends Component {
 
   change = () =>
     setTimeout(() => {
-      console.log('changing...')
+      console.log('Changing carousel images...')
       this.setState({ k: this.state.k + 1 })
       this.change()
     }, 100000)
@@ -45,7 +44,7 @@ class Demo extends Component {
 
     slides.push({
       type: 'video',
-      src: 'https://vimeo.com/113502896',
+      react: 'https://vimeo.com/113502896',
       thumbWidth: 200,
     })
      */
@@ -88,7 +87,6 @@ class Demo extends Component {
     return (
       <div>
         <h1>butik Demo</h1>
-        <Example />
         {/**
         <div className="ml7-ns mw7">
           <Carousel slides={slides} />
