@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- Components can be imported like: import { ProductImages, ProductDetails } from '@vtex/butik'
+
 ## [1.0.8] - 2018-12-26
 
 ## [1.0.7] - 2018-12-26
@@ -26,11 +30,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [1.0.2] - 2018-12-21
 
 ### Added
+
 - Package.json for react folder
 
 ## [1.0.1] - 2018-12-21
 
 ### Added
+
 - BlurredLoader Component
 - Carousel Component
 - GradientCollapse Component
@@ -41,4 +47,5 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Video Component
 
 ### Changed
+
 - Directory structure to work inside IO
