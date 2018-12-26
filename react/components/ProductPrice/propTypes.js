@@ -2,6 +2,8 @@ import PropTypes from 'prop-types'
 import { intlShape } from 'react-intl'
 
 export default {
+  /** Currency, e.g.: "BRL" */
+  currency: PropTypes.string,
   /** Product selling price */
   sellingPrice: PropTypes.number,
   /** Product list price */

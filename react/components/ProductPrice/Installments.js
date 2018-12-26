@@ -55,11 +55,10 @@ export default class Installments extends Component {
     const installment = (isEmpty(noInterestRateInstallments)
       ? installments
       : noInterestRateInstallments
-    ).reduce(
-      (previous, current) =>
-        previous.NumberOfInstallments > current.NumberOfInstallments
-          ? previous
-          : current
+    ).reduce((previous, current) =>
+      previous.NumberOfInstallments > current.NumberOfInstallments
+        ? previous
+        : current
     )
 
     const formattedInstallmentPrice = formatNumber(
@@ -78,7 +77,8 @@ export default class Installments extends Component {
     ))
 
     return (
-      <div className={classNames('vtex-price-installments__container', className)}>
+      <div
+        className={classNames('vtex-price-installments__container', className)}>
         {showLabels ? (
           <FormattedMessage
             id="pricing.installment-display"
@@ -90,11 +90,16 @@ export default class Installments extends Component {
           />
         ) : (
           <Fragment>
-            {installmentsElement}{timesElement} {installmentPriceElement}
+            {installmentsElement}
+            {timesElement} {installmentPriceElement}
           </Fragment>
         )}
         {!installment.InterestRate && (
-          <div className={classNames('vtex-price-installments__interest-rate', interestRateClass)}>
+          <div
+            className={classNames(
+              'vtex-price-installments__interest-rate',
+              interestRateClass
+            )}>
             <FormattedMessage id="pricing.interest-free" />
           </div>
         )}

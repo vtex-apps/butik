@@ -12,10 +12,6 @@ import Installments from './Installments'
  * The Price component. Shows the prices information of the Product Summary.
  */
 class Price extends Component {
-  static contextTypes = {
-    culture: PropTypes.object,
-  }
-
   static propTypes = PricePropTypes
 
   static defaultProps = {
@@ -26,11 +22,15 @@ class Price extends Component {
     labelSellingPrice: null,
   }
 
-  currencyOptions = {
-    style: 'currency',
-    currency: this.context.culture.currency,
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
+  constructor(props) {
+    super(props)
+
+    this.currencyOptions = {
+      style: 'currency',
+      currency: props.currency,
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    }
   }
 
   render() {
@@ -60,13 +60,6 @@ class Price extends Component {
       intl: { formatNumber },
     } = this.props
 
-    let { classes } = this.props
-    // avoiding undefined verifications
-    classes = {
-      ...Price.defaultProps.classes,
-      ...classes,
-    }
-
     if ((showListPrice && isNil(listPrice)) || isNil(sellingPrice)) {
       return <Price.Loader loaderClass={loaderClass} {...styles} />
     }
@@ -76,9 +69,17 @@ class Price extends Component {
     return (
       <div className={classNames('vtex-price', className)}>
         {differentPrices && (
-          <div className={classNames('vtex-price-list__container', listPriceContainerClass)}>
+          <div
+            className={classNames(
+              'vtex-price-list__container',
+              listPriceContainerClass
+            )}>
             {showLabels && (
-              <div className={classNames('vtex-price-list__label', listPriceLabelClass)}>
+              <div
+                className={classNames(
+                  'vtex-price-list__label',
+                  listPriceLabelClass
+                )}>
                 <FormattedMessage id="pricing.from" />
               </div>
             )}
@@ -87,9 +88,17 @@ class Price extends Component {
             </span>
           </div>
         )}
-        <div className={classNames('vtex-price-selling__container', sellingPriceContainerClass)}>
+        <div
+          className={classNames(
+            'vtex-price-selling__container',
+            sellingPriceContainerClass
+          )}>
           {showLabels && (
-            <div className={classNames('vtex-price-selling__label', sellingPriceLabelClass)}>
+            <div
+              className={classNames(
+                'vtex-price-selling__label',
+                sellingPriceLabelClass
+              )}>
               {labelSellingPrice || <FormattedMessage id="pricing.to" />}
             </div>
           )}
@@ -97,7 +106,7 @@ class Price extends Component {
             {formatNumber(sellingPrice, this.currencyOptions)}
           </div>
         </div>
-        {showInstallments &&
+        {showInstallments && (
           <Installments
             installments={installments}
             showLabels={showLabels}
@@ -106,9 +115,14 @@ class Price extends Component {
             className={installmentContainerClass}
             interestRateClass={interestRateClass}
             installmentClass={installmentClass}
-          />}
+          />
+        )}
         {differentPrices && showSavings && (
-          <div className={classNames('vtex-price-savings__container', savingsContainerClass)}>
+          <div
+            className={classNames(
+              'vtex-price-savings__container',
+              savingsContainerClass
+            )}>
             <div className={classNames('vtex-price-savings', savingsClass)}>
               <FormattedMessage
                 id="pricing.savings"
@@ -128,7 +142,11 @@ class Price extends Component {
 }
 
 Price.Loader = (loaderProps = {}) => (
-  <div className={classNames('vtex-price vtex-price-loader', loaderProps.loaderClass)}>
+  <div
+    className={classNames(
+      'vtex-price vtex-price-loader',
+      loaderProps.loaderClass
+    )}>
     <ContentLoader
       style={{
         width: '100%',
