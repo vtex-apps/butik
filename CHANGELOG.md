@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fix
+
+- Add ProductPrice to npm index
+- Typo in BlurredLoader export
+
 ## [1.0.10] - 2018-12-26
 
 ### Added
