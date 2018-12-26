@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- Messages builder support
+- Intl json files to NPM
+
 ## [1.0.12] - 2018-12-26
 
 ### Changed

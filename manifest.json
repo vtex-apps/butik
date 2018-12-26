@@ -5,7 +5,8 @@
   "title": "VTEX Butik",
   "description": "VTEX components for store front",
   "builders": {
-    "react": "2.x"
+    "react": "2.x",
+    "messages": "0.x"
   },
   "scripts": {
     "postreleasy": "vtex publish --verbose"

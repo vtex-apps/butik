@@ -1,0 +1,12 @@
+{
+  "product-description.title": "Descripción del Producto",
+  "product-description.property": "Propiedad",
+  "product-description.specification": "Especificación",
+  "product-description.collapse.showMore": "Ver más",
+  "product-description.collapse.showLess": "Volver",
+  "pricing.installment-display": "O {installments} {times} de {installmentPrice}",
+  "pricing.from": "De",
+  "pricing.to": "Por",
+  "pricing.savings": "Ahorre {savings}",
+  "pricing.interest-free": "sin interés",
+}
