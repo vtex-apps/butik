@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- react-html-parser to npm dependencies
+
 ## [1.0.9] - 2018-12-26
 
 ### Added
