@@ -8,6 +8,6 @@
   "pricing.from": "From",
   "pricing.to": "To",
   "pricing.savings": "Save {savings}",
-  "pricing.interest-free": "interest-free"
-  "technicalspecifications.title": "Technical Specifications",
+  "pricing.interest-free": "interest-free",
+  "technicalspecifications.title": "Technical Specifications"
 }
