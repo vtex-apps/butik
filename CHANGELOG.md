@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+
+- FixedButton export to IO and NPM
+
 ## [1.0.16] - 2018-12-27
 
 ### Fixed

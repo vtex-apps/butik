@@ -7,6 +7,7 @@ import ProductName from './ProductName'
 import ProductPrice from './ProductPrice'
 import SKUSelector from './SKUSelector'
 import Video from './Video'
+import FixedButton from './FixedButton'
 
 export {
   BlurredLoader,
@@ -18,4 +19,5 @@ export {
   ProductPrice,
   SKUSelector,
   Video,
+  FixedButton,
 }
