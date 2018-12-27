@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Removed
+
+- IO Dependency to NoSSR in FixedButton component
+
 ## [1.0.17] - 2018-12-27
 
 ### Fixed
