@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [1.0.19] - 2018-12-28
 
+### Added
+
+- Unavailable sku support to SKUSelector component
+- Select variariation support to SKUSelector component
+- sku-selector.select-warning Intl message
+
 ## [1.0.18] - 2018-12-27
 
 ### Removed
