@@ -58,7 +58,7 @@ class Demo extends Component {
      */
     const skus = []
     for (let i = 1; i <= 500; i++) {
-      const options = { sku: i, available: Math.floor(Math.random() * 2) }
+      const options = { sku: i, available: Math.floor(Math.random() * 2) > 0 }
       for (let j = 1; j <= 5; j++)
         options[`var${j}`] = `${Math.floor(Math.random() * 4)}`
       skus.push(options)
@@ -93,7 +93,7 @@ class Demo extends Component {
     }
 
     return (
-      <IntlProvider locale="pt-BR">
+      <IntlProvider locale="en">
         <Fragment>
           <h1>butik Demo</h1>
           {/**
