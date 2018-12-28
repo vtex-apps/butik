@@ -24,7 +24,7 @@ class SKUSelector extends PureComponent {
     const { skus, variations } = this.props
 
     variations.forEach(variation => {
-      /** Separate all variations into visualVariations and standardVariations based on thumbSrc value */
+      /** Separate all variations into visualVariations and standardVariations based on the thumbSrc value */
       if (variation.thumbSrc) this.visualVariations.push(variation.name)
       else this.standardVariations.push(variation.name)
 
@@ -44,11 +44,25 @@ class SKUSelector extends PureComponent {
     )
 
     this.setState({ stateMachineStateHash: this.stateMachine.initial })
-    this.stateMachine.interpret
-      .onTransition(state =>
-        this.setState({ stateMachineStateHash: state.value })
-      )
-      .start()
+    this.stateMachine.interpret.onTransition(this.handleStateTransition).start()
+  }
+
+  handleStateTransition = state => {
+    const stateMachineStateHash = state.value
+    const { onChange } = this.props
+
+    this.setState({ stateMachineStateHash })
+
+    const stateMachineState = this.stateMachine.states[stateMachineStateHash]
+
+    const selectedVariations = stateMachineState.variations
+    const sku = stateMachineState.sku
+
+    const allVariationsSelected = Object.keys(selectedVariations).reduce(
+      (accumulator, variation) =>
+        accumulator && selectedVariations[variation] !== null
+    )
+    onChange({ sku, allVariationsSelected })
   }
 
   /** Returns the variation that has a different label if there is exactly one different variation
@@ -99,10 +113,11 @@ class SKUSelector extends PureComponent {
           stateMachine.initial = hash(state.variations)
 
         const stateKey = hash(state.variations)
-        if (states[stateKey]) continue
+        if (states[stateKey] && states[stateKey].available) continue
 
         states[stateKey] = state
-        states[stateKey].sku = sku.skuId
+        states[stateKey].sku = sku.sku
+        states[stateKey].available = sku.available
       }
     })
 
@@ -137,12 +152,14 @@ class SKUSelector extends PureComponent {
 
   render() {
     const { visualVariations, standardVariations } = this
+    const { askToSelectVariations } = this.props
     const variations = visualVariations.concat(standardVariations)
 
     const { stateMachineStateHash } = this.state
     if (!stateMachineStateHash) return <div />
 
-    const stateMachineState = this.stateMachine.states[stateMachineStateHash]
+    const stateMachineStates = this.stateMachine.states
+    const stateMachineState = stateMachineStates[stateMachineStateHash]
 
     const transitions = stateMachineState.on
     const selectedVariations = stateMachineState.variations
@@ -154,21 +171,27 @@ class SKUSelector extends PureComponent {
 
           const items = Object.keys(this.variationsOptions[variation]).reduce(
             (accumulator, label) => {
+              const selected = selectedItem === label
+
               const actionHash = hash({
                 variation,
-                label: label === selectedItem ? null : label,
+                label: selected ? null : label,
               })
 
-              if (
-                transitions[actionHash] ||
-                label === selectedVariations[variation]
-              )
+              const nextStateHash = transitions[actionHash]
+
+              if (nextStateHash || selected) {
+                const available = selected
+                  ? stateMachineState.available
+                  : stateMachineStates[nextStateHash].available
+
                 accumulator.push({
                   label,
-                  available: true,
+                  available,
                   thumbSrc: null,
                   onSelectItem: this.onSelectItem(actionHash),
                 })
+              }
               return accumulator
             },
             []
@@ -182,6 +205,7 @@ class SKUSelector extends PureComponent {
                 items,
               }}
               selectedItem={selectedItem}
+              askToSelectVariation={askToSelectVariations && !selectedItem}
             />
           )
         })}
@@ -202,11 +226,15 @@ SKUSelector.propTypes = {
   /** Can just pass vtex product.items */
   skus: PropTypes.arrayOf(
     PropTypes.shape({
-      /** Value that will be returned as identifier when selected */
-      skuId: PropTypes.any,
+      /** Value that will be returned when selected */
+      sku: PropTypes.any,
+      /** True if it's available, available quantity > 0 */
+      available: PropTypes.bool,
       /** Also has the values for each variation as variationName: label */
     })
   ),
-  handleSKUSelect: PropTypes.func,
+  onChange: PropTypes.func,
+  askToSelectVariations: PropTypes.bool,
 }
+
 export default SKUSelector
