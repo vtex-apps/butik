@@ -1,16 +1,23 @@
 import React from 'react'
+import { FormattedMessage } from 'react-intl'
 import PropTypes from 'prop-types'
 import ItemSelector from './ItemSelector'
 
 class VariationSelector extends React.PureComponent {
   render() {
-    const { variation, selectedItem } = this.props
+    const { variation, selectedItem, askToSelectVariation } = this.props
 
     return (
       <div className="vtex-sku-selector__container flex flex-column mb7">
         <div className="vtex-sku-selector__name-container ma1">
-          <span className="vtex-sku-selector__name c-muted-2 db t-small overflow-hidden mb3">
-            {variation.name}
+          <span className="vtex-sku-selector__name db t-small overflow-hidden mb3">
+            <span className="c-muted-2">{variation.name}</span>
+            {askToSelectVariation ? (
+              <span className="c-danger ml3 t-mini">
+                <FormattedMessage id="sku-selector.select-warning" />{' '}
+                {variation.name}
+              </span>
+            ) : null}
           </span>
           <div className="inline-flex flex-wrap ml2">
             {variation.items.map((item, i) => (
@@ -45,6 +52,7 @@ VariationSelector.propTypes = {
   }).isRequired,
   /** It's either null when no item is selected or the selected item index */
   selectedItem: PropTypes.string,
+  askToSelectVariation: PropTypes.bool,
 }
 
 export default VariationSelector
