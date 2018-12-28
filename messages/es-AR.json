@@ -9,5 +9,6 @@
   "pricing.to": "Por",
   "pricing.savings": "Ahorre {savings}",
   "pricing.interest-free": "sin interés",
-  "technicalspecifications.title": "Especificaciones Tecnicas"
+  "technicalspecifications.title": "Especificaciones Tecnicas",
+  "sku-selector.select-warning": "Selecciona"
 }
