@@ -21,7 +21,7 @@ class SKUSelector extends PureComponent {
   }
 
   componentDidMount() {
-    const { skus, variations } = this.props
+    const { skus, variations, selectedVariationsHash } = this.props
 
     variations.forEach(variation => {
       /** Separate all variations into visualVariations and standardVariations based on the thumbSrc value */
@@ -39,7 +39,8 @@ class SKUSelector extends PureComponent {
       this.createStateMachine(
         skus,
         this.visualVariations,
-        this.standardVariations
+        this.standardVariations,
+        selectedVariationsHash
       )
     )
 
@@ -62,7 +63,12 @@ class SKUSelector extends PureComponent {
       (accumulator, variation) =>
         accumulator && selectedVariations[variation] !== null
     )
-    onChange({ sku, allVariationsSelected })
+
+    onChange({
+      sku,
+      allVariationsSelected,
+      selectedVariationsHash: stateMachineStateHash,
+    })
   }
 
   /** Returns the variation that has a different label if there is exactly one different variation
@@ -83,11 +89,16 @@ class SKUSelector extends PureComponent {
   }
 
   /** Creates a state machine whose state is based on the selected variations **/
-  createStateMachine = (skus, visualVariations, standardVariations) => {
+  createStateMachine = (
+    skus,
+    visualVariations,
+    standardVariations,
+    initialState
+  ) => {
     const { stateMachine } = this
     stateMachine.id = 'SKUSelector'
     stateMachine.states = {}
-    stateMachine.initial = null
+    stateMachine.initial = initialState
     stateMachine.transitions = {}
 
     const { states, transitions } = stateMachine
@@ -233,7 +244,11 @@ SKUSelector.propTypes = {
       /** Also has the values for each variation as variationName: label */
     })
   ),
+  /** selectedVariations hash that represents the initial state */
+  selectedVariationsHash: PropTypes.string,
+  /** Function called when an state change is triggered */
   onChange: PropTypes.func,
+  /** Boolean prop that displays a warning text beside not selected variations */
   askToSelectVariations: PropTypes.bool,
 }
 
