@@ -22,10 +22,11 @@ class SKUSelector extends PureComponent {
 
   componentDidMount() {
     const { skus, variations, selectedVariationsHash } = this.props
+    if (!variations || !variations.length) return
 
     variations.forEach(variation => {
       /** Separate all variations into visualVariations and standardVariations based on the thumbSrc value */
-      if (variation.thumbSrc) this.visualVariations.push(variation.name)
+      if (variation.hasThumbs) this.visualVariations.push(variation.name)
       else this.standardVariations.push(variation.name)
 
       /** Fills variationsOptions with all possible variationOptions */
@@ -162,6 +163,8 @@ class SKUSelector extends PureComponent {
   }
 
   render() {
+    if (!this.props.variations || !this.props.variations.length) return null
+
     const { visualVariations, standardVariations } = this
     const { askToSelectVariations } = this.props
     const variations = visualVariations.concat(standardVariations)
@@ -228,10 +231,11 @@ class SKUSelector extends PureComponent {
 // UP => selected SKU, isSkuFullySelected
 
 SKUSelector.propTypes = {
+  /** Variation name, the same used as key in 'skus' */
   variations: PropTypes.arrayOf(
     PropTypes.shape({
-      /** Variation name, the same used as key in 'skus' */
       name: PropTypes.string,
+      hasThumbs: PropTypes.bool,
     })
   ),
   /** Can just pass vtex product.items */
