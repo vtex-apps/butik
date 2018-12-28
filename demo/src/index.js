@@ -1,14 +1,15 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { render } from 'react-dom'
 import SKUSelector from '../../react/components/SKUSelector'
 
 import Carousel from '../../react/components/Carousel'
 import './tachyons.css'
+import { IntlProvider } from 'react-intl'
 
 class Demo extends Component {
   constructor(props) {
     super(props)
-    this.state = { k: 0 }
+    this.state = { k: 0, askToSelectVariations: false }
   }
 
   change = () =>
@@ -21,7 +22,14 @@ class Demo extends Component {
   componentDidMount() {
     this.change()
   }
+
+  handleSelectionChange = event => {
+    console.log(event)
+    this.setState(event)
+  }
+
   render() {
+    const { askToSelectVariations } = this.state
     /**
     const slides = []
     const ids = [
@@ -49,8 +57,8 @@ class Demo extends Component {
     })
      */
     const skus = []
-    for (let i = 1; i <= 50; i++) {
-      const options = { skuId: i }
+    for (let i = 1; i <= 500; i++) {
+      const options = { sku: i, available: Math.floor(Math.random() * 2) }
       for (let j = 1; j <= 5; j++)
         options[`var${j}`] = `${Math.floor(Math.random() * 4)}`
       skus.push(options)
@@ -85,15 +93,21 @@ class Demo extends Component {
     }
 
     return (
-      <div>
-        <h1>butik Demo</h1>
-        {/**
+      <IntlProvider locale="pt-BR">
+        <Fragment>
+          <h1>butik Demo</h1>
+          {/**
         <div className="ml7-ns mw7">
           <Carousel slides={slides} />
         </div>
          */}
-        <SKUSelector {...skuSelectorProps} />
-      </div>
+          <SKUSelector
+            {...skuSelectorProps}
+            askToSelectVariations={askToSelectVariations}
+            onChange={this.handleSelectionChange}
+          />
+        </Fragment>
+      </IntlProvider>
     )
   }
 }
