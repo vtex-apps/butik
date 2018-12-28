@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+
+- SKUSelector error when no variations are provided
+
+### Added
+
+- SKUSelector to IO
+
 ## [1.0.20] - 2018-12-28
 
 ### Added
