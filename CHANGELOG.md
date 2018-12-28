@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- External control to SKUSelector initial state
+- Additional property to onChange on SKUSelector that provides the current state hash
+
 ## [1.0.19] - 2018-12-28
 
 ### Added
