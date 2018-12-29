@@ -68,25 +68,20 @@ class Demo extends Component {
       variations: [
         {
           name: 'var1',
-          thumbSrc:
-            'https://storecomponents.vteximg.com.br/arquivos/ids/155472/Frame-3.jpg?v=636793763985400000',
+          hasThumbs: true,
         },
         {
           name: 'var2',
-          thumbSrc: null,
         },
         {
           name: 'var3',
-          thumbSrc:
-            'https://storecomponents.vteximg.com.br/arquivos/ids/155472/Frame-3.jpg?v=636793763985400000',
+          hasThumbs: true,
         },
         {
           name: 'var4',
-          thumbSrc: null,
         },
         {
           name: 'var5',
-          thumbSrc: null,
         },
       ],
       skus,
