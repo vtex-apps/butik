@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Changed
+
+- Change SKUSelector onChange to send selectedVariations instead of the hash
+
 ## [1.0.22] - 2018-12-28
 
 ### Changed
