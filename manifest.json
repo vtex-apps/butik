@@ -1,7 +1,7 @@
 {
   "vendor": "vtex",
   "name": "butik",
-  "version": "1.0.23",
+  "version": "1.0.24",
   "title": "VTEX Butik",
   "description": "VTEX components for store front",
   "builders": {

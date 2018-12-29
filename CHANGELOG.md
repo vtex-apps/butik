@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.0.24] - 2018-12-29
+
 ### Fixed
 
 - Error when no initialState is provided to the SKUSelector
