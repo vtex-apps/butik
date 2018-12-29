@@ -41,7 +41,7 @@ class SKUSelector extends PureComponent {
         skus,
         this.visualVariations,
         this.standardVariations,
-        hash(selectedVariations)
+        selectedVariations && hash(selectedVariations)
       )
     )
 
