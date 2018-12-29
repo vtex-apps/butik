@@ -248,8 +248,9 @@ SKUSelector.propTypes = {
       /** Also has the values for each variation as variationName: label */
     })
   ),
-  /** selectedVariations in the initial state of the form [{variationLabel: selectedOption}] */
-  selectedVariations: PropTypes.arrayOf(PropTypes.object),
+  /** selectedVariations in the initial state of the form {variationName: label}
+   *  for all variations using null if it's not selected */
+  selectedVariations: PropTypes.object,
   /** Function called when an state change is triggered */
   onChange: PropTypes.func,
   /** Boolean prop that displays a warning text beside not selected variations */
