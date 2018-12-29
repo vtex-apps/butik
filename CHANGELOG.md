@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Changed
+
+- Change SKUSelector prop selectedVariationsHash to selectedVariations
+
 ## [1.0.21] - 2018-12-28
 
 ### Fixed
