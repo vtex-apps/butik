@@ -21,7 +21,7 @@ class SKUSelector extends PureComponent {
   }
 
   componentDidMount() {
-    const { skus, variations, selectedVariationsHash } = this.props
+    const { skus, variations, selectedVariations } = this.props
     if (!variations || !variations.length) return
 
     variations.forEach(variation => {
@@ -41,7 +41,7 @@ class SKUSelector extends PureComponent {
         skus,
         this.visualVariations,
         this.standardVariations,
-        selectedVariationsHash
+        hash(selectedVariations)
       )
     )
 
@@ -248,8 +248,8 @@ SKUSelector.propTypes = {
       /** Also has the values for each variation as variationName: label */
     })
   ),
-  /** selectedVariations hash that represents the initial state */
-  selectedVariationsHash: PropTypes.string,
+  /** selectedVariations in the initial state of the form [{variationLabel: selectedOption}] */
+  selectedVariations: PropTypes.arrayOf(PropTypes.object),
   /** Function called when an state change is triggered */
   onChange: PropTypes.func,
   /** Boolean prop that displays a warning text beside not selected variations */
