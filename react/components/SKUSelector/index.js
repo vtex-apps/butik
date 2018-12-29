@@ -68,7 +68,7 @@ class SKUSelector extends PureComponent {
     onChange({
       sku,
       allVariationsSelected,
-      selectedVariationsHash: stateMachineStateHash,
+      selectedVariations,
     })
   }
 
