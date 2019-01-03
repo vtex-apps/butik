@@ -243,7 +243,7 @@ class Carousel extends Component {
     }
 
     return (
-      <div className={'relative overflow-hidden'}>
+      <div className={'w-100 relative overflow-hidden'}>
         <div
           className={`w-20 gallery-thumbs bottom-0 top-0 left-0 absolute pr5 dn
           ${slides.length > 1 ? 'db-ns' : ''}`}>
