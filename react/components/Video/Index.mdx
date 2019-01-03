@@ -1,0 +1,20 @@
+---
+name: Video
+route: /video
+---
+
+import { Playground, PropsTable } from 'docz'
+import Video from './'
+import 'vtex-tachyons'
+
+# Video
+
+<PropsTable of={Video} />
+
+## Basic usage
+
+<Playground>
+    {() => (
+        <Video url="https://vimeo.com/152153054" id="0" />
+    )}
+</Playground>
