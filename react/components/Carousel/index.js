@@ -121,7 +121,9 @@ class Carousel extends Component {
       case 'image':
         return (
           <div
-            className={loaded[i] ? 'swiper-zoom-container' : 'overflow-hidden'}>
+            className={`w-100 ${
+              loaded[i] ? 'swiper-zoom-container' : 'overflow-hidden'
+            }`}>
             <BlurredLoader
               loaderType="SPINNER"
               loaderUrl={slide.thumbUrl}
