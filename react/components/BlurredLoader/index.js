@@ -135,9 +135,7 @@ class BlurredLoader extends React.Component {
               alt={alt}
               src={loaderUrl}
               minRatio={imageMinRatio}
-              className={`w-100 blur-30 transition-opacity-1 db z-2 ${
-                loadState === LOAD_STATES.LOADING ? 'o-100' : 'o-0'
-              } ${className}`}
+              className={`w-100 blur-30 transition-opacity-1 db z-2 o-100 ${className}`}
             />
             <ImageResizer
               alt=""
