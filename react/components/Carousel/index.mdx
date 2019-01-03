@@ -1,0 +1,44 @@
+---
+name: Carousel
+route: /carousel
+---
+
+import { Playground, PropsTable } from 'docz'
+import Carousel from './'
+import 'vtex-tachyons'
+
+# Carousel
+
+<PropsTable of={Carousel} />
+
+## Basic usage
+
+<Playground>
+    {() => {
+        const slides = []
+        const ids = [1072, 1070, 1065, 1063, 1062, 1061, 1060, 1059, 1057, 1056]
+
+        for (let i = 0; i < ids.length; i++) {
+            const id = ids[i]
+            slides.push({
+                type: 'image',
+                urls: [`https://picsum.photos/2000/2000?image=${id}`],
+                thumbUrl: `https://picsum.photos/100/100?image=${id}`,
+                alt: 'This is an alt text',
+                bestUrlIndex: 0,
+            })
+        }
+
+        slides.push({
+        type: 'video',
+        src: 'https://vimeo.com/122588412',
+        thumbWidth: 200,
+        })
+
+        return (
+            <div className="ml7-ns mw7">
+                <Carousel slides={slides} />
+            </div>
+        )
+    }}
+</Playground>

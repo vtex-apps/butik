@@ -1,0 +1,28 @@
+---
+name: Image Resizer
+route: /image-resizer
+---
+
+import { Playground, PropsTable } from 'docz'
+import ImageResizer from './'
+import 'vtex-tachyons'
+
+# Image Resizer
+<PropsTable of={ImageResizer} />
+
+## Basic usage
+
+<Playground>
+    { () => {
+                const src = "https://picsum.photos/300/500?image=234"
+                const alt = "This is an alt text"
+                const minRatio = 3/4
+                return (
+                    <React.Fragment>
+                        <img className="ba b--success" src={src} alt={alt}/>
+                        <ImageResizer className="ba ml5 b--success" src={src} alt={alt} minRatio={minRatio} />
+                    </React.Fragment>
+                )
+        }
+    }
+</Playground>

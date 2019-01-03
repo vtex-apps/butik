@@ -251,7 +251,8 @@ SKUSelector.propTypes = {
   /** selectedVariations in the initial state of the form {variationName: label}
    *  for all variations using null if it's not selected */
   selectedVariations: PropTypes.object,
-  /** Function called when an state change is triggered */
+  /** Function called when the state change is triggered. It receives the selected sku,
+   *  the variations that are selected and a boolean telling if all variations are selected  */
   onChange: PropTypes.func,
   /** Boolean prop that displays a warning text beside not selected variations */
   askToSelectVariations: PropTypes.bool,

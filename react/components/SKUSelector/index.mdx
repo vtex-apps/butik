@@ -1,0 +1,62 @@
+---
+name: SKU Selector
+route: /sku-selector
+---
+
+import { Playground, PropsTable } from 'docz'
+import { IntlProvider } from 'react-intl'
+import SKUSelector from './'
+import 'vtex-tachyons'
+
+# SKU Selector
+<PropsTable of={SKUSelector} />
+
+## Basic usage
+
+<Playground>
+    { () => {
+        const skus = []
+        for (let i = 1; i <= 500; i++) {
+          const options = { sku: i, available: Math.floor(Math.random() * 2) > 0 }
+          options['Color'] = `${Math.floor(Math.random() * 4)}`
+          options['Size'] = `${Math.floor(Math.random() * 4)}`
+          options['Print'] = `${Math.floor(Math.random() * 4)}`
+          options['Fit'] = `${Math.floor(Math.random() * 4)}`
+          options['Length'] = `${Math.floor(Math.random() * 4)}`
+          skus.push(options)
+        }
+
+        const skuSelectorProps = {
+          variations: [
+            {
+              name: 'Color',
+              hasThumbs: true,
+            },
+            {
+              name: 'Size',
+            },
+            {
+              name: 'Print',
+              hasThumbs: true,
+            },
+            {
+              name: 'Fit',
+            },
+            {
+              name: 'Length',
+            },
+          ],
+          skus,
+        }
+
+        return (
+          <IntlProvider locale="en">
+              <SKUSelector
+                {...skuSelectorProps}
+                askToSelectVariations={false}
+                onChange={() => {}}
+              />
+          </IntlProvider>
+        )
+     }}
+</Playground>

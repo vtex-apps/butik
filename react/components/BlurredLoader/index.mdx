@@ -1,0 +1,42 @@
+---
+name: Blurred Loader
+route: /blurred-loader
+---
+
+import { Playground, PropsTable } from 'docz'
+import BlurredLoader from './'
+import 'vtex-tachyons'
+
+# Blurred Loader
+<PropsTable of={BlurredLoader} />
+
+## Basic usage
+
+<Playground>
+  {() => {
+        ids = [1072, 1070, 1065, 1063, 1062, 1061, 1060, 1059, 1057, 1056]
+        thresholds = [640]
+        imageSizes = [2560, 3840]
+        loaderSize = 60
+        const id = ids[Math.floor(Math.random()*ids.length)]
+
+        const aspect = 3 / 4
+        const getUrlFromDimensions = (id, width) =>
+          `https://picsum.photos/${width}/${Math.floor(width / aspect)}?image=${id}`
+
+        return (
+          <div className="overflow-hidden" >
+            <BlurredLoader
+              key={Math.floor(Math.random()*100)} /** As a uncontrolled component with a key, it needs a key to reload */
+              alt="Random image"
+              loaderUrl={getUrlFromDimensions(id, loaderSize)}
+              realUrls={imageSizes.map(size => getUrlFromDimensions(id, size))}
+              thresholds={thresholds}
+              bestUrlIndex={0}
+              loaderType={'LINEAR'}
+            />
+          </div>
+        )
+      }
+    }
+</Playground>

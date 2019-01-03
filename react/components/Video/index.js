@@ -18,12 +18,17 @@ class Video extends Component {
   }
 }
 
-Video.propsTypes = {
+Video.propTypes = {
+  /** Video url */
   url: PropTypes.string.isRequired,
+  /** Unique id for iFrame */
   id: PropTypes.number.isRequired,
+  /** Function that receives the video thumbnail URL as prop */
   setThumb: PropTypes.func,
+  /** Desired width for the thumbnail retrieved by the function above */
   thumbWidth: PropTypes.number,
   className: PropTypes.string,
+  /** Dynamic prop that pauses and plays the video */
   play: PropTypes.bool,
 }
 

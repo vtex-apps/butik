@@ -1,4 +1,4 @@
 {
-  "presets": ["react-app"],
+  "presets": ["@babel/react", "@babel/env"],
   "plugins": ["transform-es2015-modules-commonjs", "dynamic-import-node"]
 }
