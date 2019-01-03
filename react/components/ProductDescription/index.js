@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl'
 import HtmlParser from 'react-html-parser'
-import GradientCollapse from './components/GradientCollapse'
+import GradientCollapse from '../GradientCollapse'
 
 import './global.css'
 
@@ -19,7 +19,10 @@ class ProductDescription extends Component {
     }
 
     const specificationItems = specifications.map(specification => {
-      return { property: specification.name, specifications: specification.values[0] }
+      return {
+        property: specification.name,
+        specifications: specification.values[0],
+      }
     })
 
     return (
@@ -55,8 +58,12 @@ class ProductDescription extends Component {
                 <tbody>
                   {specificationItems.map((specification, i) => (
                     <tr key={i}>
-                      <td className="w-50 b--muted-4 bb pa5">{specification.property}</td>
-                      <td className="w-50 b--muted-4 bb pa5">{specification.specifications}</td>
+                      <td className="w-50 b--muted-4 bb pa5">
+                        {specification.property}
+                      </td>
+                      <td className="w-50 b--muted-4 bb pa5">
+                        {specification.specifications}
+                      </td>
                     </tr>
                   ))}
                 </tbody>
