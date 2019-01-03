@@ -76,9 +76,9 @@ class GradientCollapse extends Component {
                   className="c-action-primary t-action pointer ma5"
                   onClick={() => this.setState({ collapsed: !collapsed })}>
                   {state === 'entered' || (collapsed && state !== 'exited') ? (
-                    <FormattedMessage id="product-description.collapse.showLess" />
+                    <FormattedMessage id="collapse.showLess" />
                   ) : (
-                    <FormattedMessage id="product-description.collapse.showMore" />
+                    <FormattedMessage id="collapse.showMore" />
                   )}
                 </div>
               </div>
