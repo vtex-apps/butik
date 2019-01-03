@@ -21,6 +21,7 @@ styleguide-visual/*.new.png
 .env.production.local
 .vscode
 .idea
+.docz
 
 npm-debug.log*
 yarn-debug.log*
