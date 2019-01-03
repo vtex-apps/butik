@@ -119,6 +119,7 @@ class BlurredLoader extends React.Component {
     const { className, alt, loaderUrl, realUrls } = this.props
     const { loadState, realUrlIndex } = this.state
     const loaded = loadState === LOAD_STATES.LOADED
+    console.log(this.props)
 
     return (
       <React.Fragment>
@@ -135,9 +136,7 @@ class BlurredLoader extends React.Component {
               alt={alt}
               src={loaderUrl}
               minRatio={imageMinRatio}
-              className={`w-100 blur-30 transition-opacity-1 db z-2 ${
-                loadState === LOAD_STATES.LOADING ? 'o-100' : 'o-0'
-              } ${className}`}
+              className={`w-100 blur-30 transition-opacity-1 db z-2 o-100 ${className}`}
             />
             <ImageResizer
               alt=""
@@ -162,7 +161,7 @@ BlurredLoader.propTypes = {
   thresholds: PropTypes.arrayOf(PropTypes.number),
   onload: PropTypes.func,
   bestUrlIndex: PropTypes.number,
-  loaderType: PropTypes.string,
+  loaderType: PropTypes.oneOf([LOADER_TYPES.SPINNER, LOADER_TYPES.LINEAR]),
 }
 
 BlurredLoader.defaultProps = {
