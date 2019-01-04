@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.1.3] - 2019-01-04
+
 ### Added
 - Docz based documentation for BlurredLoader, Carousel, FixedButton, GradientCollapse, Image Resizer, ProductDescription, SKUSelector and Video components
 - Prop description to Video component
