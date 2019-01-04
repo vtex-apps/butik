@@ -62,7 +62,8 @@ class SKUSelector extends PureComponent {
 
     const allVariationsSelected = Object.keys(selectedVariations).reduce(
       (accumulator, variation) =>
-        accumulator && selectedVariations[variation] !== null
+        accumulator && selectedVariations[variation] !== null,
+      true
     )
 
     onChange({
