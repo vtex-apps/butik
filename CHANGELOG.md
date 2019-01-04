@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fixed
 - Typo in Video component propTypes
+- SKUSelector bug in the return value of allVariationsSelected
 
 ### Changed
 - Improved BlurredLoader load effect
