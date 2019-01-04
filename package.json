@@ -48,12 +48,17 @@
     "react": "16.x"
   },
   "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "@babel/preset-react": "^7.0.0",
     "@vtex/react-scripts": "1.2.0",
     "babel-cli": "^6.26.0",
     "babel-eslint": "^8.2.6",
+    "babel-loader": "^8.0.5",
     "babel-plugin-add-react-displayname": "0.0.5",
     "babel-plugin-dynamic-import-node": "^1.2.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-react-app": "^3.1.2",
     "copyfiles": "^1.2.0",
