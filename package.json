@@ -20,7 +20,7 @@
     "lint": "eslint react",
     "lint-fix": "eslint react --fix --max-warnings 0",
     "prettier-conflict-check": "eslint --print-config .eslintrc | eslint-config-prettier-check",
-    "babel": "NODE_ENV=production babel ./react/components --out-dir ./lib --ignore '__tests__,*.spec.js' --ignore '*.md' --copy-files --plugins=@babel/plugin-proposal-class-properties,@babel/plugin-syntax-class-properties,transform-es2015-modules-commonjs,dynamic-import-node --presets=@babel/preset-env,@babel/preset-react",
+    "babel": "NODE_ENV=production babel react/components --out-dir lib --copy-files",
     "cleanlib": "rm -rf lib",
     "compile": "run-s cleanlib babel",
     "vtex-io": "run-s entrypoints manifest-version",
