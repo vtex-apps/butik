@@ -119,7 +119,6 @@ class BlurredLoader extends React.Component {
     const { className, alt, loaderUrl, realUrls } = this.props
     const { loadState, realUrlIndex } = this.state
     const loaded = loadState === LOAD_STATES.LOADED
-    console.log(this.props)
 
     return (
       <React.Fragment>
