@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Removed
+- Console.log from BlurredLoader
+- Demo folder
+
+### Changed
+- Babel config files
+
 ## [1.1.3] - 2019-01-04
 
 ### Added
