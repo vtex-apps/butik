@@ -100,7 +100,6 @@ class SKUSelector extends PureComponent {
     const { stateMachine } = this
     stateMachine.id = 'SKUSelector'
     stateMachine.states = {}
-    stateMachine.initial = initialState
     stateMachine.transitions = {}
 
     const { states, transitions } = stateMachine
@@ -122,10 +121,11 @@ class SKUSelector extends PureComponent {
           else state.variations[variation] = null
         })
 
-        if (bitMask === 0 && !stateMachine.initial)
-          stateMachine.initial = hash(state.variations)
-
         const stateKey = hash(state.variations)
+
+        if (bitMask === 0 && !stateMachine.initial)
+          stateMachine.initial = stateKey
+
         if (states[stateKey] && states[stateKey].available) continue
 
         states[stateKey] = state
@@ -155,6 +155,9 @@ class SKUSelector extends PureComponent {
         states[keyA].on[actionHash] = keyB
       })
     })
+
+    if (initialState && stateMachine[initialState])
+      stateMachine.initial = initialState
 
     return Machine(stateMachine)
   }
