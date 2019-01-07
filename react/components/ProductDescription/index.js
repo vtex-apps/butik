@@ -14,7 +14,7 @@ class ProductDescription extends Component {
   render() {
     const { specifications, description } = this.props
 
-    if (!description || !specifications) {
+    if (!description && !specifications) {
       return null
     }
 
@@ -28,17 +28,21 @@ class ProductDescription extends Component {
     return (
       <div className="vtex-product-description flex-l">
         <div className="w-100 w-60-l">
-          <div className="t-heading-5 mb5">
-            <FormattedMessage id="product-description.title" />
-          </div>
+          {description && (
+            <React.Fragment>
+              <div className="t-heading-5 mb5">
+                <FormattedMessage id="product-description.title" />
+              </div>
 
-          <div className="c-muted-1">
-            <GradientCollapse collapseHeight={220}>
-              {HtmlParser(description)}
-            </GradientCollapse>
-          </div>
+              <div className="c-muted-1">
+                <GradientCollapse collapseHeight={220}>
+                  {HtmlParser(description)}
+                </GradientCollapse>
+              </div>
+            </React.Fragment>
+          )}
         </div>
-        {specifications.length > 0 && (
+        {specifications && specifications.length > 0 && (
           <div className="vtex-product-specifications mt9 mt0-l w-100 w-40-l pl8-l">
             <div className="vtex-product-specifications__title t-heading-5 mb5">
               <FormattedMessage id="technicalspecifications.title" />
