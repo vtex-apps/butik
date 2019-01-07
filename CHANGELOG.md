@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Changed
+- Update SKUSelector to ignore invalid selectedVariations prop
+
 ## [1.1.4] - 2019-01-07
 
 ### Removed
@@ -16,7 +19,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 - Babel config files
 - ProductDescription to show description and specifications independently
-
 
 ## [1.1.3] - 2019-01-04
 
