@@ -14,9 +14,16 @@ For instructions on how to use Butik components in your project refer to the pag
 
 ### Installing
 
+npm
 ```sh
 npm install @vtex/butik
 ```
+
+VTEX IO
+```sh
+vtex install vtex.butik
+```
+
 
 
 ### Import intl translations
