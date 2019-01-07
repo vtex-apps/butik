@@ -7,4 +7,5 @@ export default {
       preprocessor: 'postcss',
     }),
   ],
+  ignore: ['lib'],
 }
