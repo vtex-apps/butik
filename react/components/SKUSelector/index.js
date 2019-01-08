@@ -143,7 +143,7 @@ class SKUSelector extends PureComponent {
               notUnique || sku.price.notUnique || sku.price.value !== value
 
             states[stateKey].price.value = Math.min(value, sku.price.value)
-          } else states[stateKey].price = sku.price
+          } else states[stateKey].price = { ...sku.price }
         }
       }
     })
