@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 - Update SKUSelector to ignore invalid selectedVariations prop
+- vtex-sku-selector__item bottom margin
 
 ## [1.1.4] - 2019-01-07
 
