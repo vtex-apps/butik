@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fix
+- Mutation in SKUSelector prop
+
 ## [1.1.5] - 2019-01-08
 
 ### Changed
