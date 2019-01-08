@@ -40,6 +40,7 @@ class Price extends Component {
       showInstallments,
       showLabels,
       showSavings,
+      showStartingAt,
       labelSellingPrice,
       className,
       loaderClass,
@@ -55,6 +56,7 @@ class Price extends Component {
       installmentClass,
       interestRateClass,
       installmentContainerClass,
+      startingAtClass,
       styles,
       intl: { formatNumber },
     } = this.props
@@ -100,6 +102,15 @@ class Price extends Component {
               )}>
               {labelSellingPrice || <FormattedMessage id="pricing.to" />}
             </div>
+          )}
+          {showStartingAt && (
+            <span
+              className={classNames(
+                'vtex-price-selling__from-tag',
+                startingAtClass
+              )}>
+              <FormattedMessage id="pricing.startingAtLabel" />{' '}
+            </span>
           )}
           <div className={classNames('vtex-price-selling', sellingPriceClass)}>
             {formatNumber(sellingPrice, this.currencyOptions)}

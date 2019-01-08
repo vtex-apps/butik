@@ -16,6 +16,8 @@ export default {
   showInstallments: PropTypes.bool.isRequired,
   /** Set visibility of savings */
   showSavings: PropTypes.bool,
+  /** Shows 'From ' before the actual price */
+  showStartingAt: PropTypes.bool,
   /** Text to the selling price's label */
   labelSellingPrice: PropTypes.string,
   /** Available installments */
@@ -59,6 +61,8 @@ export default {
   installmentContainerClass: PropTypes.string,
   /** Classes to be applied to interest rate element */
   interestRateClass: PropTypes.string,
+  /** Classes to be applied to the fromTag */
+  startingAtClass: PropTypes.string,
   /** Component and content loader styles */
   styles: PropTypes.object,
   /** intl property to format data */
