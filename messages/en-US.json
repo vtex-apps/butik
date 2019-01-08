@@ -9,6 +9,7 @@
   "pricing.to": "To",
   "pricing.savings": "Save {savings}",
   "pricing.interest-free": "interest-free",
+  "pricing.startingAtLabel": "Starting at",
   "technicalspecifications.title": "Technical Specifications",
   "sku-selector.select-warning": "Select"
 }
