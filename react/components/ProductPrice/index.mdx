@@ -1,0 +1,82 @@
+---
+name: Product Price
+route: /product-price
+---
+
+import { Playground, PropsTable } from 'docz'
+import { IntlProvider } from 'react-intl'
+import ProductPrice from './'
+import 'vtex-tachyons'
+
+# Product Price
+
+<PropsTable of={ProductPrice} />
+
+## Basic usage
+
+<Playground>
+    {() => {
+        const productPriceLoaderStyles = {
+            'vtex-price-list__container--loader': {
+            x: 0,
+            width: '7.219em',
+            height: '0.56em',
+            },
+            'vtex-price-selling__label--loader': {
+            x: 0,
+            y: '2em',
+            width: '2.85em',
+            height: '1.08em',
+            },
+            'vtex-price-selling--loader': {
+            x: '3.25em',
+            y: '0.86em',
+            width: '14.572em',
+            height: '2.176em',
+            },
+            'vtex-price-installments--loader': {
+            x: 0,
+            y: '3.75em',
+            width: '12em',
+            height: '0.825em',
+            },
+            'vtex-price-savings--loader': {
+            x: 0,
+            y: '5em',
+            width: '10em',
+            height: '0.686em',
+            },
+        }
+
+        const productPriceProps = {
+            styles: productPriceLoaderStyles,
+            listPriceContainerClass: 't-small-s t-small-ns c-muted-2 mb2',
+            sellingPriceLabelClass: 't-heading-6-s t-heading-5-ns dib',
+            listPriceLabelClass: 'dib strike',
+            listPriceClass: 'ph2 dib strike',
+            sellingPriceContainerClass: 'pv1 b c-on-base',
+            sellingPriceClass: 't-heading-2-s dib ph2',
+            installmentContainerClass: 't-mini-s t-small-ns c-on-base',
+            installmentClass: 't-body',
+            interestRateClass: 'dib ph2',
+            savingsContainerClass: 'c-success mt3',
+            savingsClass: 'dib t-small',
+            startingAtClass: 't-heading-6-s t-heading-5-ns dib',
+            showLabels: false,
+            showListPrice: true,
+            showSavings: true,
+            showStartingAt: true,
+            loaderClass: 'h4-s mw6-s pt2-s',
+            listPrice: 120,
+            sellingPrice: 100,
+            currency: "BRL",
+            installments: [],
+        }
+
+        return (
+            <IntlProvider location="en">
+                <ProductPrice {...productPriceProps} />
+            </IntlProvider>
+        )
+    }}
+</Playground>
