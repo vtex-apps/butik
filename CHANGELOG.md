@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Update SKUSelector to ignore invalid selectedVariations prop
 - vtex-sku-selector__item bottom margin
 
+### Added
+- Minimum price at each state for SKUSelector
+- ShowStartingAt and startingAtClass props to ProductPrice
+- price.startingAtLabel intl message
+
 ## [1.1.4] - 2019-01-07
 
 ### Removed
