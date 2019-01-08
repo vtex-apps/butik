@@ -232,8 +232,6 @@ class SKUSelector extends PureComponent {
   }
 }
 
-// UP => selected SKU, isSkuFullySelected
-
 SKUSelector.propTypes = {
   /** Variation name, the same used as key in 'skus' */
   variations: PropTypes.arrayOf(
