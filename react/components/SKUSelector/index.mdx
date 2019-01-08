@@ -18,6 +18,7 @@ import 'vtex-tachyons'
         const skus = []
         for (let i = 1; i <= 500; i++) {
           const options = { sku: i, available: Math.floor(Math.random() * 2) > 0 }
+          options.price = { value: Math.floor(Math.random()*200 + 20) }
           options['Color'] = `${Math.floor(Math.random() * 4)}`
           options['Size'] = `${Math.floor(Math.random() * 4)}`
           options['Print'] = `${Math.floor(Math.random() * 4)}`
@@ -54,7 +55,7 @@ import 'vtex-tachyons'
               <SKUSelector
                 {...skuSelectorProps}
                 askToSelectVariations={false}
-                onChange={() => {}}
+                onChange={event => console.log(event)}
               />
           </IntlProvider>
         )

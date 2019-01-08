@@ -58,7 +58,7 @@ class SKUSelector extends PureComponent {
     const stateMachineState = this.stateMachine.states[stateMachineStateHash]
 
     const selectedVariations = stateMachineState.variations
-    const sku = stateMachineState.sku
+    const { sku, price } = stateMachineState
 
     const allVariationsSelected = Object.keys(selectedVariations).reduce(
       (accumulator, variation) =>
@@ -70,6 +70,7 @@ class SKUSelector extends PureComponent {
       sku,
       allVariationsSelected,
       selectedVariations,
+      price,
     })
   }
 
@@ -126,11 +127,24 @@ class SKUSelector extends PureComponent {
         if (bitMask === 0 && !stateMachine.initial)
           stateMachine.initial = stateKey
 
-        if (states[stateKey] && states[stateKey].available) continue
+        if (!states[stateKey] || !states[stateKey].available) {
+          if (!states[stateKey]) states[stateKey] = {}
 
-        states[stateKey] = state
-        states[stateKey].sku = sku.sku
-        states[stateKey].available = sku.available
+          states[stateKey].variations = state.variations
+          states[stateKey].sku = sku.sku
+          states[stateKey].available = sku.available
+        }
+
+        if (sku.available) {
+          if (states[stateKey].price) {
+            const { value, notUnique } = states[stateKey].price
+
+            states[stateKey].price.notUnique =
+              notUnique || sku.price.notUnique || sku.price.value !== value
+
+            states[stateKey].price.value = Math.min(value, sku.price.value)
+          } else states[stateKey].price = sku.price
+        }
       }
     })
 
@@ -247,6 +261,13 @@ SKUSelector.propTypes = {
       sku: PropTypes.any,
       /** True if it's available, available quantity > 0 */
       available: PropTypes.bool,
+      /** Necessary for the component return the minimum price at each state */
+      price: PropTypes.shape({
+        /** The minimum price of that Sku */
+        value: PropTypes.number,
+        /** True if this sku have different prices from multiple sellers */
+        notUnique: PropTypes.bool,
+      }),
       /** Also has the values for each variation as variationName: label */
     })
   ),
