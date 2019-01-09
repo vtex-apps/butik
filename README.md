@@ -38,5 +38,5 @@ import esMessages from '@vtex/butik/messages/es-AR.json'
 
 ### Running local docz page
 ```sh
-npm docz:dev
+npm start
 ```
