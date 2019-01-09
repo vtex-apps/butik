@@ -36,6 +36,7 @@ class Price extends Component {
     const {
       sellingPrice,
       listPrice,
+      unavailable,
       showListPrice,
       showInstallments,
       showLabels,
@@ -57,6 +58,7 @@ class Price extends Component {
       interestRateClass,
       installmentContainerClass,
       startingAtClass,
+      unavailableClass,
       styles,
       intl: { formatNumber },
     } = this.props
@@ -64,6 +66,13 @@ class Price extends Component {
     if ((showListPrice && isNil(listPrice)) || isNil(sellingPrice)) {
       return <Price.Loader loaderClass={loaderClass} {...styles} />
     }
+
+    if (unavailable)
+      return (
+        <div className={unavailableClass}>
+          <FormattedMessage id="pricing.unavailable" />
+        </div>
+      )
 
     const differentPrices = showListPrice && sellingPrice !== listPrice
 

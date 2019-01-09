@@ -10,6 +10,7 @@
   "pricing.savings": "Save {savings}",
   "pricing.interest-free": "interest-free",
   "pricing.startingAtLabel": "Starting at",
+  "pricing.unavailable": "Unavailable",
   "technicalspecifications.title": "Technical Specifications",
   "sku-selector.select-warning": "Select"
 }

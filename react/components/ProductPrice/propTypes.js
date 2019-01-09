@@ -8,6 +8,8 @@ export default {
   sellingPrice: PropTypes.number,
   /** Product list price */
   listPrice: PropTypes.number,
+  /** True if the product is unavailable */
+  unavailable: PropTypes.bool,
   /** Set visibility of list price */
   showListPrice: PropTypes.bool.isRequired,
   /** Set visibility of labels */
@@ -61,8 +63,10 @@ export default {
   installmentContainerClass: PropTypes.string,
   /** Classes to be applied to interest rate element */
   interestRateClass: PropTypes.string,
-  /** Classes to be applied to the fromTag */
+  /** Classes to be applied to the fromLabel */
   startingAtClass: PropTypes.string,
+  /** Classes to be applied to the unavailable message */
+  unavailableClass: PropTypes.string,
   /** Component and content loader styles */
   styles: PropTypes.object,
   /** intl property to format data */
