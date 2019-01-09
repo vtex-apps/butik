@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Changed
+- Start script from package.json
+
+### Added
+- Unavailable prop to ProductPrice
+
 ## [1.1.6] - 2019-01-08
 
 ### Fix
