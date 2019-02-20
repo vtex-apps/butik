@@ -23,10 +23,10 @@ class Youtube extends Component {
 
     this.state = { iframe: {} }
 
-    const { loop, autoplay, title, url } = this.props
-    const params = `autoplay=${autoplay}&loop=${loop}&title=${title}&enablejsapi=1&iv_load_policy=3&modestbranding=1`
+    const { loop, autoplay, url, apiKey } = this.props
+    const params = `autoplay=${autoplay}&loop=${loop}&enablejsapi=1&iv_load_policy=3&modestbranding=1`
     const videoId = Youtube.extractVideoID(url)
-    const getUrl = `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${props.apiKey}`
+    const getUrl = `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${apiKey}`
 
     this.iframeRef = React.createRef()
 
@@ -110,11 +110,10 @@ Youtube.propTypes = {
   className: PropTypes.string,
   loop: PropTypes.bool,
   autoplay: PropTypes.bool,
-  showTitle: PropTypes.bool,
   width: PropTypes.number,
   height: PropTypes.number,
   playing: PropTypes.bool,
-  title: PropTypes.string,
+  apiKey: PropTypes.string,
 }
 
 Youtube.defaultProps = {
@@ -122,7 +121,6 @@ Youtube.defaultProps = {
   autoplay: false,
   width: null,
   height: null,
-  title: false,
   className: '',
 }
 
