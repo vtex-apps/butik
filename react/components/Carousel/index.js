@@ -44,7 +44,7 @@ class Carousel extends Component {
       slides.forEach((slide, i) => {
         if (slide.type === 'video') {
           this.isVideo[i] = true
-          Video.getThumbUrl(slide.src, slide.thumbWidth).then(this.getThumb)
+          Video.getThumbUrl(slide.src, slide.thumbWidth, slide.apiKey).then(this.getThumb)
         } else this.getThumb(slide.thumbUrl)
       })
   }
@@ -141,6 +141,7 @@ class Carousel extends Component {
             setThumb={this.setVideoThumb(i)}
             playing={i === this.state.activeIndex}
             id={i}
+            apiKey={slide.apiKey}
           />
         )
       default:

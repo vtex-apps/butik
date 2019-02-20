@@ -1,15 +1,11 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-const youtubeApiKey = null
-
-// TODO: Youtube Component disabled until settings update and backend update to support video
-// Author: @samuraiexx
 
 class Youtube extends Component {
-  static getThumbUrl = url =>
+  static getThumbUrl = (url, apiKey) =>
     new Promise(resolve => {
       const videoId = Youtube.extractVideoID(url)
-      const getUrl = `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${youtubeApiKey}`
+      const getUrl = `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${apiKey}`
       fetch(getUrl)
         .then(responseonse => {
           return responseonse.json()
@@ -30,7 +26,7 @@ class Youtube extends Component {
     const { loop, autoplay, title, url } = this.props
     const params = `autoplay=${autoplay}&loop=${loop}&title=${title}&enablejsapi=1&iv_load_policy=3&modestbranding=1`
     const videoId = Youtube.extractVideoID(url)
-    const getUrl = `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${youtubeApiKey}`
+    const getUrl = `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${props.apiKey}`
 
     this.iframeRef = React.createRef()
 
@@ -59,10 +55,13 @@ class Youtube extends Component {
   }
 
   static extractVideoID = url => {
-    const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/
-    const match = url.match(regExp)
-    if (match && match[7].length === 11) return match[7]
-    return null
+    const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/
+    var match = url.match(regExp)
+    if (match && match[7].length == 11){
+        return match[7];
+    }
+    console.error('Could not extract youtube video ID')
+    return ''
   }
 
   componentDidMount() {
