@@ -106,14 +106,13 @@ Youtube.propTypes = {
   url: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired, // Unique ID for iframe title
   setThumb: PropTypes.func,
-  thumbWidth: PropTypes.number,
   className: PropTypes.string,
   loop: PropTypes.bool,
   autoplay: PropTypes.bool,
   width: PropTypes.number,
   height: PropTypes.number,
   playing: PropTypes.bool,
-  apiKey: PropTypes.string,
+  apiKey: PropTypes.string.isRequired, // API key necessary for youtube requests
 }
 
 Youtube.defaultProps = {
