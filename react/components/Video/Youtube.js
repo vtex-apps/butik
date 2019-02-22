@@ -1,15 +1,11 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-const youtubeApiKey = null
-
-// TODO: Youtube Component disabled until settings update and backend update to support video
-// Author: @samuraiexx
 
 class Youtube extends Component {
-  static getThumbUrl = url =>
+  static getThumbUrl = (url, apiKey) =>
     new Promise(resolve => {
       const videoId = Youtube.extractVideoID(url)
-      const getUrl = `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${youtubeApiKey}`
+      const getUrl = `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${apiKey}`
       fetch(getUrl)
         .then(responseonse => {
           return responseonse.json()
@@ -27,10 +23,10 @@ class Youtube extends Component {
 
     this.state = { iframe: {} }
 
-    const { loop, autoplay, title, url } = this.props
-    const params = `autoplay=${autoplay}&loop=${loop}&title=${title}&enablejsapi=1&iv_load_policy=3&modestbranding=1`
+    const { loop, autoplay, url, apiKey } = this.props
+    const params = `autoplay=${autoplay}&loop=${loop}&enablejsapi=1&iv_load_policy=3&modestbranding=1`
     const videoId = Youtube.extractVideoID(url)
-    const getUrl = `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${youtubeApiKey}`
+    const getUrl = `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${apiKey}`
 
     this.iframeRef = React.createRef()
 
@@ -59,10 +55,13 @@ class Youtube extends Component {
   }
 
   static extractVideoID = url => {
-    const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/
+    const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/
     const match = url.match(regExp)
-    if (match && match[7].length === 11) return match[7]
-    return null
+    if (match && match[7].length == 11) {
+        return match[7];
+    }
+    console.error('Could not extract youtube video ID')
+    return ''
   }
 
   componentDidMount() {
@@ -107,15 +106,13 @@ Youtube.propTypes = {
   url: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired, // Unique ID for iframe title
   setThumb: PropTypes.func,
-  thumbWidth: PropTypes.number,
   className: PropTypes.string,
   loop: PropTypes.bool,
   autoplay: PropTypes.bool,
-  showTitle: PropTypes.bool,
   width: PropTypes.number,
   height: PropTypes.number,
   playing: PropTypes.bool,
-  title: PropTypes.string,
+  apiKey: PropTypes.string.isRequired, // API key necessary for youtube requests
 }
 
 Youtube.defaultProps = {
@@ -123,7 +120,6 @@ Youtube.defaultProps = {
   autoplay: false,
   width: null,
   height: null,
-  title: false,
   className: '',
 }
 
