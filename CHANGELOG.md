@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [1.2.0] - 2019-02-22
 
+### Changed
+- Add support for receiving youtubeApiKey and rendering Youtube Videos
+
 ## [1.1.7] - 2019-01-09
 
 ### Changed
