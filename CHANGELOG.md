@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+- Increase fault tolerance for video rendering in Carousel
+
 ## [1.2.0] - 2019-02-22
 
 ### Changed

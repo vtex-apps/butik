@@ -40,13 +40,29 @@ class Carousel extends Component {
     this.rebuildGalleryOnUpdate = false
     this.thumbLoadCount = 0
 
-    slides &&
-      slides.forEach((slide, i) => {
+    if (slides) {
+      const thumbPromises = slides.flatMap((slide, i) => {
         if (slide.type === 'video') {
-          this.isVideo[i] = true
-          Video.getThumbUrl(slide.src, slide.thumbWidth, slide.apiKey).then(this.getThumb)
-        } else this.getThumb(slide.thumbUrl)
+          try {
+            this.isVideo[i] = true
+            const thumbUrl = Video.getThumbUrl(
+              slide.src,
+              slide.thumbWidth,
+              slide.apiKey
+            )
+            return thumbUrl ? [thumbUrl] : []
+          } catch (error) {
+            this.thumbLoadCount++
+            return []
+          }
+        } else {
+          return [Promise.resolve(slide.thumbUrl)]
+        }
       })
+      thumbPromises.forEach(promise =>
+        promise.then(this.getThumb).catch(() => this.thumbLoadCount++)
+      )
+    }
   }
 
   debouncedRebuildOnUpdate = debounce(() => {
@@ -135,15 +151,20 @@ class Carousel extends Component {
           </div>
         )
       case 'video':
-        return (
-          <Video
-            url={slide.src}
-            setThumb={this.setVideoThumb(i)}
-            playing={i === this.state.activeIndex}
-            id={i}
-            apiKey={slide.apiKey}
-          />
-        )
+        try {
+          return (
+            <Video
+              url={slide.src}
+              setThumb={this.setVideoThumb(i)}
+              playing={i === this.state.activeIndex}
+              id={i}
+              apiKey={slide.apiKey}
+            />
+          )
+        } catch (err) {
+          console.error(`Error while loading ${slide.src}`)
+          return null
+        }
       default:
         return null
     }

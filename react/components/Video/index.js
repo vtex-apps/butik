@@ -11,6 +11,7 @@ class Video extends Component {
     if (url.search('youtube') !== -1) {
       return Youtube.getThumbUrl(url, apiKey)
     }
+    return Promise.reject(`Unsupported video url format, ${url}`)
   }
 
   render() {
@@ -21,6 +22,7 @@ class Video extends Component {
     if (url.search('youtube') !== -1) {
       return <Youtube {...this.props} />
     }
+    return null
   }
 }
 

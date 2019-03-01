@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 class Youtube extends Component {
   static getThumbUrl = (url, apiKey) =>
-    new Promise(resolve => {
+    new Promise((resolve, reject) => {
       const videoId = Youtube.extractVideoID(url)
       const getUrl = `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${apiKey}`
       fetch(getUrl)
@@ -11,7 +11,10 @@ class Youtube extends Component {
           return responseonse.json()
         })
         .then(response => {
-          if (response.items.length === 0) return
+          if (response.items.length === 0) {
+            reject(`No video found with URL: ${url} and apiKey: ${apiKey}`)
+            return
+          }
           response = response.items[0].snippet
 
           resolve(response.thumbnails.default.url)
@@ -55,10 +58,10 @@ class Youtube extends Component {
   }
 
   static extractVideoID = url => {
-    const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/
+    const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/
     const match = url.match(regExp)
-    if (match && match[7].length == 11) {
-        return match[7];
+    if (match && match[7].length === 11) {
+      return match[7]
     }
     console.error('Could not extract youtube video ID')
     return ''
