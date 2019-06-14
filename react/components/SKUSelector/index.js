@@ -184,7 +184,7 @@ class SKUSelector extends PureComponent {
     if (!this.props.variations || !this.props.variations.length) return null
 
     const { visualVariations, standardVariations } = this
-    const { askToSelectVariations } = this.props
+    const { askToSelectVariations, designTokens } = this.props
     const variations = visualVariations.concat(standardVariations)
 
     const { stateMachineStateHash } = this.state
@@ -236,6 +236,7 @@ class SKUSelector extends PureComponent {
                 name: variation,
                 items,
               }}
+              designTokens={designTokens}
               selectedItem={selectedItem}
               askToSelectVariation={askToSelectVariations && !selectedItem}
             />
@@ -279,6 +280,8 @@ SKUSelector.propTypes = {
   onChange: PropTypes.func,
   /** Boolean prop that displays a warning text beside not selected variations */
   askToSelectVariations: PropTypes.bool,
+  /** Used to change internal designs. When set, will replace component className **/
+  designTokens: PropTypes.shape({ skuSelectorContainer: PropTypes.string }),
 }
 
 export default SKUSelector
