@@ -5,10 +5,19 @@ import ItemSelector from './ItemSelector'
 
 class VariationSelector extends React.PureComponent {
   render() {
-    const { variation, selectedItem, askToSelectVariation } = this.props
+    const {
+      variation,
+      selectedItem,
+      askToSelectVariation,
+      designTokens,
+    } = this.props
 
     return (
-      <div className="vtex-sku-selector__container flex flex-column mb7">
+      <div
+        className={
+          designTokens.skuSelectorContainer ||
+          'vtex-sku-selector__container flex flex-column mb7'
+        }>
         <div className="vtex-sku-selector__name-container ma1">
           <span className="vtex-sku-selector__name db t-small overflow-hidden mb3">
             <span className="c-muted-2">{variation.name}</span>
@@ -53,6 +62,7 @@ VariationSelector.propTypes = {
   /** It's either null when no item is selected or the selected item index */
   selectedItem: PropTypes.string,
   askToSelectVariation: PropTypes.bool,
+  designTokens: PropTypes.shape({ skuSelectorContainer: PropTypes.string }),
 }
 
 export default VariationSelector
