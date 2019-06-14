@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+- Add design tokens for sku selector container
+
 ## [1.2.1] - 2019-03-08
 
 ### Fixed
