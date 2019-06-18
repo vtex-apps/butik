@@ -15,7 +15,7 @@ class VariationSelector extends React.PureComponent {
     return (
       <div
         className={
-          designTokens.skuSelectorContainer ||
+          (designTokens && designTokens.skuSelectorContainer) ||
           'vtex-sku-selector__container flex flex-column mb7'
         }>
         <div className="vtex-sku-selector__name-container ma1">

@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+- Design tokens reference to skuSelectorContainer of null
+
 ## [1.2.2] - 2019-06-14
 
 ### Added
