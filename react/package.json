@@ -2,6 +2,7 @@
   "name": "vtex.butik",
   "dependencies": {
     "@material-ui/core": "^3.6.2",
+    "@vtex/styleguide": "^9.72.4",
     "classnames": "^2.2.6",
     "debounce": "^1.2.0",
     "lodash": "^4.17.11",
