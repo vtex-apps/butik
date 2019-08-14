@@ -28,7 +28,6 @@
   },
   "dependencies": {
     "@material-ui/core": "^3.6.2",
-    "@vtex/styleguide": "^8.2.0",
     "classnames": "^2.2.6",
     "debounce": "^1.2.0",
     "lodash": "^4.17.11",
@@ -44,7 +43,8 @@
     "xstate": "^4.2.2"
   },
   "peerDependencies": {
-    "react": "16.x"
+    "react": "16.x",
+    "@vtex/styleguide": "9.x"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
@@ -93,7 +93,8 @@
     "react-dom": "^16.6.3",
     "react-hot-loader": "^4.6.3",
     "watch": "^1.0.2",
-    "webpack": "^4.28.1"
+    "webpack": "^4.28.1",
+    "@vtex/styleguide": "^9.72.4"
   },
   "author": "",
   "homepage": "",
