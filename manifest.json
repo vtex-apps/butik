@@ -6,7 +6,8 @@
   "description": "VTEX components for store front",
   "builders": {
     "react": "2.x",
-    "messages": "0.x"
+    "messages": "0.x",
+    "docs": "0.x"
   },
   "scripts": {
     "postreleasy": "vtex publish --verbose"
