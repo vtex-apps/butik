@@ -207,8 +207,7 @@ class Carousel extends Component {
     const { isVideo } = this
 
     if (prevProps.slides !== this.props.slides) {
-      this.setState(initialState)
-      this.setInitialVariablesState()
+      this.setState(initialState, () => this.setInitialVariablesState())
       return
     }
 
