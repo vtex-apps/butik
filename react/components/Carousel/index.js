@@ -226,7 +226,9 @@ class Carousel extends Component {
   render() {
     const { thumbSwiper, thumbsLoaded } = this.state
     const { rebuildGalleryOnUpdate } = this
-    const slides = this.props.slides.map(slide => ({ ...slide }))
+    const slides = this.props.slides
+      ? this.props.slides.map(slide => ({ ...slide }))
+      : []
 
     if (!thumbsLoaded || Swiper == null) {
       return <Loader slidesAmount={slides ? slides.length : 0} />

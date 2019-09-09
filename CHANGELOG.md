@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 
 ### Fixed
-- Carousel slide error runs into an infinite Loader
+- Carousel slide error running into an infinite loading state
 
 ## [1.3.0] - 2019-08-14
 
