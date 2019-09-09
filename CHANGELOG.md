@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+- Carousel problem when a slide not works and try load new slides
+
 ## [1.3.1-beta.0] - 2019-09-05
 
 ### Fixed
