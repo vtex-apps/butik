@@ -7,6 +7,7 @@ import BlurredLoader from '../BlurredLoader'
 import Video from '../Video'
 import CaretLeft from '@vtex/styleguide/lib/icon/CaretLeft'
 import CaretRight from '@vtex/styleguide/lib/icon/CaretRight'
+import placeholder from './noimage.svg'
 
 import './global.css'
 
@@ -21,6 +22,15 @@ const initialState = {
   alt: [],
   thumbsLoaded: false,
   activeIndex: 0,
+  failedImageIndexes: [],
+}
+
+const placeholderSlide = {
+  alt: 'Failed image',
+  bestUrlIndex: 0,
+  thumbUrl: placeholder,
+  type: 'image',
+  urls: [placeholder],
 }
 
 class Carousel extends Component {
@@ -41,7 +51,7 @@ class Carousel extends Component {
     this.thumbLoadCount = 0
 
     if (slides) {
-      const thumbPromises = slides.flatMap((slide, i) => {
+      const thumbPromises = slides.map((slide, i) => {
         if (slide.type === 'video') {
           try {
             this.isVideo[i] = true
@@ -50,18 +60,26 @@ class Carousel extends Component {
               slide.thumbWidth,
               slide.apiKey
             )
-            return thumbUrl ? [thumbUrl] : []
+            return thumbUrl
+              .then(url => ({ thumbUrl: url, index: i }))
+              .catch(() => Promise.reject(i))
           } catch (error) {
-            this.thumbLoadCount++
-            return []
+            return Promise.reject(i)
           }
-        } else {
-          return [Promise.resolve(slide.thumbUrl)]
         }
+        return Promise.resolve({
+          thumbUrl: slide.thumbUrl,
+          index: i,
+        })
       })
-      thumbPromises.forEach(promise =>
-        promise.then(this.getThumb).catch(() => this.thumbLoadCount++)
-      )
+      thumbPromises.forEach(promise => {
+        promise.then(this.getThumb).catch(index => {
+          this.incrementThumbsLoaded()
+          this.setState({
+            failedImageIndexes: this.state.failedImageIndexes.concat(index),
+          })
+        })
+      })
     }
   }
 
@@ -69,17 +87,27 @@ class Carousel extends Component {
     this.state.thumbSwiper && this.state.thumbSwiper.update()
   }, 500)
 
-  getThumb = thumbUrl => {
+  getThumb = ({ thumbUrl, index }) => {
     if (!window.navigator) return // Image object doesn't exist when it's being rendered in the server side
 
     const image = new Image()
     image.onload = () => {
-      this.thumbLoadCount++
-      if (this.thumbLoadCount === this.props.slides.length) {
-        this.setState({ thumbsLoaded: true })
-      }
+      this.incrementThumbsLoaded()
+    }
+    image.onerror = () => {
+      this.incrementThumbsLoaded()
+      this.setState({
+        failedImageIndexes: this.state.failedImageIndexes.concat(index),
+      })
     }
     image.src = thumbUrl
+  }
+
+  incrementThumbsLoaded() {
+    this.thumbLoadCount++
+    if (this.thumbLoadCount === this.props.slides.length) {
+      this.setState({ thumbsLoaded: true })
+    }
   }
 
   componentDidMount() {
@@ -133,6 +161,10 @@ class Carousel extends Component {
   renderSlide = (slide, i) => {
     const { loaded } = this.state
 
+    if (this.state.failedImageIndexes.includes(i)) {
+      slide = placeholderSlide
+    }
+
     switch (slide.type) {
       case 'image':
         return (
@@ -175,8 +207,7 @@ class Carousel extends Component {
     const { isVideo } = this
 
     if (prevProps.slides !== this.props.slides) {
-      this.setInitialVariablesState()
-      this.setState(initialState)
+      this.setState(initialState, () => this.setInitialVariablesState())
       return
     }
 
@@ -195,7 +226,9 @@ class Carousel extends Component {
   render() {
     const { thumbSwiper, thumbsLoaded } = this.state
     const { rebuildGalleryOnUpdate } = this
-    const { slides } = this.props
+    const slides = this.props.slides
+      ? this.props.slides.map(slide => ({ ...slide }))
+      : []
 
     if (!thumbsLoaded || Swiper == null) {
       return <Loader slidesAmount={slides ? slides.length : 0} />
@@ -270,16 +303,21 @@ class Carousel extends Component {
           className={`w-20 gallery-thumbs bottom-0 top-0 left-0 absolute pr5 dn
           ${slides.length > 1 ? 'db-ns' : ''}`}>
           <Swiper {...thumbnailParams}>
-            {slides.map((slide, i) => (
-              <div key={i} className="swiper-slide w-100 h-auto mb5">
-                <img
-                  className="w-100 h-auto db"
-                  alt={slide.alt ? this.state.alt[i] : ''}
-                  src={slide.thumbUrl || this.state.thumbUrl[i]}
-                />
-                <div className="absolute absolute--fill b--solid b--muted-2 bw1 thumb-border" />
-              </div>
-            ))}
+            {slides.map((slide, i) => {
+              if (this.state.failedImageIndexes.includes(i)) {
+                slide.thumbUrl = placeholderSlide.thumbUrl
+              }
+              return (
+                <div key={i} className="swiper-slide w-100 h-auto mb5">
+                  <img
+                    className="w-100 h-auto db"
+                    alt={slide.alt ? this.state.alt[i] : ''}
+                    src={slide.thumbUrl || this.state.thumbUrl[i]}
+                  />
+                  <div className="absolute absolute--fill b--solid b--muted-2 bw1 thumb-border" />
+                </div>
+              )
+            })}
           </Swiper>
         </div>
         <div

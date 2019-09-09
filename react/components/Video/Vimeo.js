@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 class Vimeo extends Component {
   static getThumbUrl = (url, thumbWidth) =>
-    new Promise(resolve => {
+    new Promise((resolve, reject) => {
       const getUrl = `https://vimeo.com/api/oembed.json?url=${url}`
       fetch(getUrl)
         .then(response => {
@@ -12,6 +12,7 @@ class Vimeo extends Component {
         .then(response => {
           resolve(Vimeo.thumbUrlFromResp(response, thumbWidth))
         })
+        .catch(() => reject())
     })
 
   static thumbUrlFromResp(response, thumbWidth) {
