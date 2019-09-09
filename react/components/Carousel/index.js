@@ -207,8 +207,7 @@ class Carousel extends Component {
     const { isVideo } = this
 
     if (prevProps.slides !== this.props.slides) {
-      this.setState(initialState)
-      this.setInitialVariablesState()
+      this.setState(initialState, () => this.setInitialVariablesState())
       return
     }
 
@@ -227,7 +226,7 @@ class Carousel extends Component {
   render() {
     const { thumbSwiper, thumbsLoaded } = this.state
     const { rebuildGalleryOnUpdate } = this
-    const { slides } = this.props
+    const slides = this.props.slides.map(slide => ({ ...slide }))
 
     if (!thumbsLoaded || Swiper == null) {
       return <Loader slidesAmount={slides ? slides.length : 0} />
