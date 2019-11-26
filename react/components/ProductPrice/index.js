@@ -160,46 +160,46 @@ class Price extends Component {
   }
 }
 
-Price.Loader = (loaderProps = {}) => (
-  <div
-    className={classNames(
-      'vtex-price vtex-price-loader',
-      loaderProps.loaderClass
-    )}>
-    <ContentLoader
-      style={{
-        width: '100%',
-        height: '100%',
-      }}
-      width={300}
-      height={70}
-      preserveAspectRatio="xMinYMin meet"
-      {...loaderProps}>
-      <rect
-        height="0.75em"
-        width="50%"
-        x="25%"
-        {...loaderProps['vtex-price-list__container--loader']}
-      />
-      <rect {...loaderProps['vtex-price-selling__label--loader']} />
-      <rect
-        height="1em"
-        width="70%"
-        x="15%"
-        y="1.25em"
-        {...loaderProps['vtex-price-selling--loader']}
-      />
-      <rect
-        height="0.75em"
-        width="80%"
-        x="10%"
-        y="2.75em"
-        {...loaderProps['vtex-price-installments--loader']}
-      />
-      <rect {...loaderProps['vtex-price-savings--loader']} />
-    </ContentLoader>
-  </div>
-)
+Price.Loader = (loaderProps = {}) => {
+  const { loaderClass, ...filteredLoaderProps } = loaderProps
+
+  return (
+    <div className={classNames('vtex-price vtex-price-loader', loaderClass)}>
+      <ContentLoader
+        style={{
+          width: '100%',
+          height: '100%',
+        }}
+        width={300}
+        height={70}
+        preserveAspectRatio="xMinYMin meet"
+        {...filteredLoaderProps}>
+        <rect
+          height="0.75em"
+          width="50%"
+          x="25%"
+          {...filteredLoaderProps['vtex-price-list__container--loader']}
+        />
+        <rect {...filteredLoaderProps['vtex-price-selling__label--loader']} />
+        <rect
+          height="1em"
+          width="70%"
+          x="15%"
+          y="1.25em"
+          {...filteredLoaderProps['vtex-price-selling--loader']}
+        />
+        <rect
+          height="0.75em"
+          width="80%"
+          x="10%"
+          y="2.75em"
+          {...filteredLoaderProps['vtex-price-installments--loader']}
+        />
+        <rect {...filteredLoaderProps['vtex-price-savings--loader']} />
+      </ContentLoader>
+    </div>
+  )
+}
 
 Price.Loader.displayName = 'Price.Loader'
 
