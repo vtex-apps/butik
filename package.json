@@ -1,6 +1,6 @@
 {
   "name": "@vtex/butik",
-  "version": "1.3.1",
+  "version": "1.3.3",
   "description": "VTEX components for store front",
   "main": "lib/index.js",
   "module": "es/index.js",
