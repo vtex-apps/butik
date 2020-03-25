@@ -170,7 +170,7 @@ class SKUSelector extends PureComponent {
       })
     })
 
-    if (initialState && stateMachine[initialState])
+    if (initialState && stateMachine.states[initialState])
       stateMachine.initial = initialState
 
     return Machine(stateMachine)
