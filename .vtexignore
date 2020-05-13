@@ -4,7 +4,6 @@ react/node_modules/
 .eslintrc
 .gitignore
 README.md
-CHANGELOG.md
 docs/
 google7c6328087fc392d0.html
 package-lock.json
