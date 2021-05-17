@@ -18,7 +18,7 @@ class ProductDescription extends Component {
       return null
     }
 
-    const specificationItems = specifications.map((specification) => {
+    const specificationItems = specifications.map(specification => {
       return {
         property: specification.name,
         specifications: specification.values[0],
@@ -43,7 +43,7 @@ class ProductDescription extends Component {
           )}
         </div>
         {specifications && specifications.length > 0 && (
-          <div className="vtex-product-specifications mt9 mt0-l w-100 w-40-l pl8-l">
+          <div className="vtex-product-specifications mt6 mt0-l w-100 w-40-l pl8-l">
             <div className="vtex-product-specifications__title lh-solid b c-on-base mb5">
               <FormattedMessage id="technicalspecifications.title" />
             </div>
