@@ -7,8 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+- Crowdin file 
+
 ## [1.3.6] - 2021-09-08
-### Changned
+### Changed
 - Tachyon class in `ProductDescription` from `mt9` to `mt6`
 
 ## [1.3.5] - 2021-05-26
