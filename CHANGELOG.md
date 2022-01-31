@@ -7,17 +7,20 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+- Arabic translation
+
 ## [1.3.7] - 2021-09-20
 
 ### Added
-- Crowdin file 
+- Crowdin file
 
 ## [1.3.6] - 2021-09-08
 ### Changed
 - Tachyon class in `ProductDescription` from `mt9` to `mt6`
 
 ## [1.3.5] - 2021-05-26
-### Changed 
+### Changed
 - Tachyons class in `ProductDescription` title
 
 ## [1.3.4] - 2020-03-25
@@ -194,7 +197,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fixed
 
-- Intl JSON format 
+- Intl JSON format
 
 ## [1.0.15] - 2018-12-27
 

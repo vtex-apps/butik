@@ -1,0 +1,16 @@
+{
+  "product-description.title": "خصائص المنتج",
+  "product-description.property": "المؤسسة",
+  "product-description.specification": "المواصفات",
+  "collapse.showMore": "اعرض المزيد",
+  "collapse.showLess": "اعرض أقل",
+  "pricing.installment-display": "أو {installments} {times} من {installmentPrice}",
+  "pricing.from": "من",
+  "pricing.to": "إلى",
+  "pricing.savings": "توفير {savings}",
+  "pricing.interest-free": "بدون فوائد",
+  "pricing.startingAtLabel": "بداية من",
+  "pricing.unavailable": "غير متاح",
+  "technicalspecifications.title": "المواصفات الفنية",
+  "sku-selector.select-warning": "اختر"
+}
