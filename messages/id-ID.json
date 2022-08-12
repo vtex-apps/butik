@@ -1,0 +1,16 @@
+{
+  "product-description.title": "Deskripsi Produk",
+  "product-description.property": "Properti",
+  "product-description.specification": "Spesifikasi",
+  "collapse.showMore": "Tampilkan lebih banyak",
+  "collapse.showLess": "Tampilkan lebih sedikit",
+  "pricing.installment-display": "Atau {installments} {times} sebesar {installmentPrice}",
+  "pricing.from": "Mulai",
+  "pricing.to": "Hingga",
+  "pricing.savings": "Hemat {savings}",
+  "pricing.interest-free": "Bebas bunga",
+  "pricing.startingAtLabel": "Mulai",
+  "pricing.unavailable": "Tidak tersedia",
+  "technicalspecifications.title": "Spesifikasi Teknis",
+  "sku-selector.select-warning": "Pilih"
+}
