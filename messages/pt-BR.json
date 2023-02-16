@@ -1,5 +1,5 @@
 {
-  "product-description.title": "Descrição do Produto",
+  "product-description.title": "Descrição do produto",
   "product-description.property": "Propriedade",
   "product-description.specification": "Especificação",
   "collapse.showMore": "Ver mais",
@@ -11,6 +11,6 @@
   "pricing.interest-free": "sem juros",
   "pricing.startingAtLabel": "A partir de",
   "pricing.unavailable": "Indisponível",
-  "technicalspecifications.title": "Especificações Técnicas",
+  "technicalspecifications.title": "Especificações técnicas",
   "sku-selector.select-warning": "Selecione"
 }
